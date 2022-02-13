@@ -28,13 +28,11 @@ def parser(url: str):
 
 class Info():
     def __init__(self):
-        url_info = (
-            "https://raw.githubusercontent.com/36base/girlsfrontline-resources-extract/"
-            "master/data/info.json"
-        )
+        url_info = "M:\girlsfrontline-resources-extract\data\info.json"
         try:
-            self.info = json.loads(parser(url_info))
-            self.status = True
+            with open(url_info) as f:
+                self.info = json.loads(f.read())
+                self.status = True
         except ParsingError:
             self.status = False
 
